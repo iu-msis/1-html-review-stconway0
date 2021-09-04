@@ -44,7 +44,8 @@ body {
   }
   
   .book-form {
-    
+      border-left: 3px #533EAB solid;
+      padding-left: 20px;
   }
   
   /* To change colors of Bootstrap buttons, the following resource was used: https://www.codegrepper.com/code-examples/html/bootstrap+change+button+color */
@@ -54,4 +55,3 @@ body {
       color:#FFF;
       border-color: #533EAB;
   }
-  
