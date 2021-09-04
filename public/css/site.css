@@ -6,13 +6,17 @@ body {
     background-color: #44318D;
   }
   
-  main {
-  
-  }
-  
   footer {
     color: white; 
     background-color: #44318D;  
+  }
+  
+  h1 {
+    font-size: 42px;
+  }
+  
+  button {
+    background-color: #44318D;
   }
   
   .page-title {
@@ -39,10 +43,15 @@ body {
     border-color: white;
   }
   
+  .book-form {
+    
+  }
   
+  /* To change colors of Bootstrap buttons, the following resource was used: https://www.codegrepper.com/code-examples/html/bootstrap+change+button+color */
   
-  
-  .profile-info col-sx-9 {
-    font-size: 10px;
+  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+      background-color: #533EAB !important;
+      color:#FFF;
+      border-color: #533EAB;
   }
   
