@@ -1,57 +1,92 @@
 body {
-    font-family: "Segoe UI", sans-serif;
-  }
+  font-family: "Segoe UI", sans-serif;
+}
   
-  nav {
-    background-color: #44318D;
-  }
+nav {
+  background-color: #44318D;
+}
   
-  footer {
-    color: white; 
-    background-color: #44318D;  
-  }
+footer {
+  color: white; 
+  background-color: #44318D;  
+}
   
-  h1 {
-    font-size: 42px;
-  }
+h1 {
+  font-size: 42px;
+}
   
-  button {
-    background-color: #44318D;
-  }
+button {
+  background-color: #44318D;
+}
   
-  .page-title {
-    padding: 20px 0px 20px 0px;
-  }
+.page-title {
+  padding: 20px 0px 20px 0px;
+}
   
-  .page-title h1 {
-    font-size: 42px;
-    color: white;
-  }
+.page-title h1 {
+  font-size: 42px;
+  color: white;
+}
   
-  .background-title {
-    background: linear-gradient(180deg,#533EAB 60%,white 40%); 
-  }
+.background-title {
+  background: linear-gradient(180deg,#533EAB 60%,white 40%); 
+}
   
-  .profile-info {
-    font-size: 18px;
-  }
+.profile-info {
+  font-size: 18px;
+}
   
-  .profile-info img{  
-    border-radius: 50%;
-    border: 5px;
-    border-style: solid;
-    border-color: white;
-  }
+.profile-info img{  
+  border-radius: 50%;
+  border: 5px;
+  border-style: solid;
+  border-color: white;
+}
   
-  .book-form {
-      border-left: 3px #533EAB solid;
-      padding-left: 20px;
-  }
+.book-form {
+    border-left: 3px #533EAB solid;
+    padding-left: 20px;
+}
   
-  /* To change colors of Bootstrap buttons, the following resource was used: https://www.codegrepper.com/code-examples/html/bootstrap+change+button+color */
+/* To change colors of Bootstrap buttons, the following resource was used: https://www.codegrepper.com/code-examples/html/bootstrap+change+button+color */
   
-  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-      background-color: #533EAB !important;
-      color:#FFF;
-      border-color: #533EAB;
-  }
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #533EAB;
+  color:#FFF;
+  border-color: #533EAB;
+}
+
+  /* Table CSS was made possible with the following resource: https://github.com/tristen/tablesort/blob/gh-pages/tablesort.css */
+th[role=columnheader]:not(.no-sort) {
+  cursor: pointer;
+}
+  
+th[role=columnheader]:not(.no-sort):after {
+  content: '';
+  float: right;
+  margin-top: 7px;
+  border-width: 0 4px 4px;
+  border-style: solid;
+  border-color: #404040 transparent;
+  visibility: hidden;
+  opacity: 0;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+  
+th[aria-sort=ascending]:not(.no-sort):after {
+  border-bottom: none;
+  border-width: 4px 4px 0;
+}
+  
+th[aria-sort]:not(.no-sort):after {
+  visibility: visible;
+  opacity: 0.4;
+}
+  
+th[role=columnheader]:not(.no-sort):hover:after {
+  visibility: visible;
+  opacity: 1;
+}
