@@ -56,7 +56,7 @@ button {
   border-color: #533EAB;
 }
 
-  /* Table CSS was made possible with the following resource: https://github.com/tristen/tablesort/blob/gh-pages/tablesort.css */
+/* Table CSS was made possible with the following resource: https://github.com/tristen/tablesort/blob/gh-pages/tablesort.css */
 th[role=columnheader]:not(.no-sort) {
   cursor: pointer;
 }
