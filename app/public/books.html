@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <!-- Page title -->
     <title>Books</title>
@@ -14,8 +14,7 @@
     <!-- Applying fonts -->
     <!-- Fonts taken from the following website: https://www.cdnfonts.com/segoe-ui-4.font -->
     <link href="http://fonts.cdnfonts.com/css/segoe-ui-4" rel="stylesheet">
-    <style>@import url('http://fonts.cdnfonts.com/css/segoe-ui-4');</style>
-    
+
     <!-- HTML CSS -->
     <link href="css/site.css" rel="stylesheet" type="text/css">
   </head>
@@ -23,7 +22,7 @@
   <body>
     <!-- Navigation menu -->
     <!-- Navigation style -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #44318D;">
+    <nav class="navbar navbar-expand-lg navbar-dark">
     
       <!-- Navbar content -->
       <a class="navbar-brand" href="index.html" style="font-family: 'Brush Script MT', cursive; padding-left: 50px;">Logan Garcia</a>
@@ -37,8 +36,8 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="books.html">Books <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link active" href="books.html">Books <span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="interests.html">Interests</a>
@@ -125,7 +124,7 @@
 
         <br><br>
 
-        <center><h3>Add a Book to the Table</h3></center>
+        <h3 class="text-center">Add a Book to the Table</h3>
 
         <div class="row justify-content-center">  
           <form class="book-form">
@@ -173,9 +172,9 @@
               </div>
             </div>     
 
-            <center>
-              <button type="button" class="btn btn-primary">Primary</button>  
-            </center>    
+            <div class="text-center">
+              <button type="button" class="btn btn-primary">Primary</button>   
+            </div>    
           </form>
         </div>
 
@@ -183,14 +182,6 @@
       </div>
     </main>
     
-    <br><br>
-
-    <!-- Page footer -->
-    <footer>
-      <center>Logan Garcia | 5827 Adams St | +1 (091)-046-0654</center>
-    </footer>
-
-
     <!-- JavaScript -->
     <!-- Table sort JS made possible with the following resource: http://tristen.ca/tablesort/demo/ -->
     <script src="js/tablesort.min.js"></script>
@@ -198,10 +189,7 @@
       new Tablesort(document.getElementById("bookTable"));
     </script>
 
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <!-- Bundle Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>
