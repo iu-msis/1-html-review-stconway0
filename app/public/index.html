@@ -17,6 +17,9 @@
     
     <!-- HTML CSS -->
     <link href="css/site.css" rel="stylesheet" type="text/css">
+
+    <!-- Vue.js script-->
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
 
   <body>
@@ -25,8 +28,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
     
       <!-- Navbar content -->
-      <a class="navbar-brand" id="page_logo" href="index.html">Logan Garcia</a>
-      
+      <a class="navbar-brand" id="page_logo" href="index.html">User Page</a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -52,19 +55,21 @@
 
       <!-- The profile card was made with assistance of the following resource as a template: https://bbbootstrap.com/snippets/bootstrap-user-profile-information-card-social-icons-72209127 -->
       <div class="container d-flex justify-content-center">
-        <div class="profile_card">
+        <div class="profile_card" id="personInfo">
         
           <!-- Top portion of the profile card -->
           <div class="profile_area1">
             <div class="row">
               
               <div class="col 2">
-                <img src="img/profile-headshot.jpg" class="img-fluid profile_image">
+                <a v-bind:href="person.picture.large"> 
+                  <img v-bind:src="person.picture.large" class="img-fluid profile_image" alt="Profile picture">
+                </a>
               </div>
-              
+
               <div class="col 10"> 
-                <h1>Logan Garcia</h1>
-                <div><a href="mailto:logan.garcia@example.com" target="_blank" class="btn btn-light btn-sm email_button">Email Me</a></div>
+                <h1>{{ person.name.first }} {{ person.name.last }}</h1>
+                <div><a v-bind:href="'mailto:'+person.email" target="_blank" class="btn btn-light btn-sm email_button">Email Me</a></div>
               </div>
 
             </div> 
@@ -72,16 +77,14 @@
 
           <div class="profile_area2">
             <div class="row profile_info">
-              <div><span class="data_heading">Country of Origin:</span> Spain</div>
-              <div><span class="data_heading">Birthdate:</span> August 17, 1993</div>
-              <div><span class="data_heading">Age:</span> 28</div>
+              <div><span class="data_heading">Country of Origin:</span> {{ person.location.country}}</div>
+              <div><span class="data_heading">Birthdate:</span> {{ person.dob.date }} </div>
+              <div><span class="data_heading">Age:</span> {{person.registered.age }}</div>
             </div>
           </div>
 
         </div>
       </div>
-      <!-- For JS API Connection Note (DELETE LATER): -->
-      <!-- name (first & last), country of origin, birthdate, age, email address, and a profile picture of the random user-->
 
     </main>
 
