@@ -25,10 +25,10 @@
   <body>
     <!-- Navigation menu -->
     <!-- Navigation style -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" id="userNav">
     
       <!-- Navbar content -->
-      <a class="navbar-brand" id="page_logo" href="index.html">User Page</a>
+      <a class="navbar-brand" id="page_logo" href="index.html">User Page {{person.name.first}}</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -78,8 +78,24 @@
           <div class="profile_area2">
             <div class="row profile_info">
               <div><span class="data_heading">Country of Origin:</span> {{ person.location.country}}</div>
-              <div><span class="data_heading">Birthdate:</span> {{ person.dob.date }} </div>
-              <div><span class="data_heading">Age:</span> {{person.registered.age }}</div>
+              <div><span class="data_heading">Birthdate:</span> {{prettyBirtthday}} </div>
+              <div><span class="data_heading">Age:</span> {{person.dob.age }}</div>
+
+              <!-- Button code adapted from: https://bbbootstrap.com/snippets/css-animation-extend-button-text-hover-92985871 -->
+              <div class="text-center user_button_position"> 
+                <a href="#" class="btn user_button"> 
+                  <span class="user_button_text">
+                    
+                  <!-- Button icon taken from: https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill">
+                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    
+                  New User</span> 
+                </a> 
+              </div>
+
             </div>
           </div>
 
