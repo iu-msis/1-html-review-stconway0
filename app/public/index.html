@@ -68,17 +68,18 @@
               </div>
 
               <div class="col 10"> 
-                <h1>{{ person.name.first }} {{ person.name.last }}</h1>
+                <h1>{{person.name.first}} {{person.name.last}}</h1>
                 <div><a v-bind:href="'mailto:'+person.email" target="_blank" class="btn btn-light btn-sm email_button">Email Me</a></div>
               </div>
 
             </div> 
           </div>
-
+          
+          <!-- Bottom portion of the profile card -->
           <div class="profile_area2">
             <div class="row profile_info">
-              <div><span class="data_heading">Country of Origin:</span> {{ person.location.country}}</div>
-              <div><span class="data_heading">Birthdate:</span> {{prettyBirtthday}} </div>
+              <div><span class="data_heading">Country of Origin:</span> {{person.location.country}}</div>
+              <div><span class="data_heading">Birthdate:</span> {{prettyBirthday}} </div>
               <div><span class="data_heading">Age:</span> {{person.dob.age }}</div>
 
               <!-- Button code adapted from: https://bbbootstrap.com/snippets/css-animation-extend-button-text-hover-92985871 -->
@@ -108,6 +109,9 @@
     <!-- Bundle Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
+    <!-- Loading dayjs library -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    
     <script src="js/index.js"></script>
   </body>
 </html>
