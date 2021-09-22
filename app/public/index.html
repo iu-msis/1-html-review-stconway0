@@ -84,17 +84,19 @@
 
               <!-- Button code adapted from: https://bbbootstrap.com/snippets/css-animation-extend-button-text-hover-92985871 -->
               <div class="text-center user_button_position"> 
-                <a href="#" class="btn user_button"> 
-                  <span class="user_button_text">
-                    
-                  <!-- Button icon taken from: https://icons.getbootstrap.com/icons/person-plus-fill/ -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill">
-                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                    </svg>
-                    
-                  New User</span> 
-                </a> 
+                <form v-on:submit.prevent="fetchUserData">
+                  <button type="submit" class="btn user_button"> 
+                    <span class="user_button_text">
+                      
+                    <!-- Button icon taken from: https://icons.getbootstrap.com/icons/person-plus-fill/ -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill">
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                      </svg>
+                      
+                    New User</span> 
+                  </button> 
+                </form>
               </div>
 
             </div>
@@ -111,7 +113,7 @@
 
     <!-- Loading dayjs library -->
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    
+
     <script src="js/index.js"></script>
   </body>
 </html>
