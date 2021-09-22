@@ -82,7 +82,7 @@ button {
 /* Button CSS */
 /* CSS for expanding button was taken from the following resource: https://bbbootstrap.com/snippets/css-animation-extend-button-text-hover-92985871 */
 .user_button {
-  background-color: #44318D;
+  background-color: #533EAB;
   max-width: 35px;
   border-radius: 20px;
   padding-left: 10px;
@@ -94,7 +94,7 @@ button {
 }
 
 .user_button:hover {
-  background-color: #44318D;
+  background-color: #533EAB;
   color: white;
   max-width: 300px
 }
