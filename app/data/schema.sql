@@ -35,6 +35,13 @@ INSERT INTO offer(id, studentId, companyName, salary, bonus, offerDate) VALUES
 ;
 
 
+-- COMMIT;
+
+-- CREATE USER 'msisreader'@'%' IDENTIFIED BY 'msisreadonly';
+-- GRANT SELECT ON * . * TO 'msisreader'@'%';
+
+
+
 -- Adding books table
 DROP TABLE IF EXISTS books;
 CREATE TABLE books (
@@ -48,23 +55,9 @@ CREATE TABLE books (
 );
 
 INSERT INTO books(id, title, author, year_published, publisher, page_count, msrp) VALUES
-	(1, "People in Places",	"Perla Greenig", 1992, "Becker Group",	371, "57.00"),
-	(2, "Murphy's Law", "Amerigo Barnbrook", 1998, "Rempel Group", 505,	"10.08"),
-    (3,	"Human Capital", "Xylina Potten", 1991, "Spencer-Mueller", 557, "42.48"),
-	(4, "Eddie", "Nikola Watkins", 2007, "Torphy-Turner", 333, "12.55"),
-	(5,	"Aerial, The (La antena)", "Katine Boydell", 1998, "Hilll-Connelly", 122, "28.98")
+	(1, "People in Places",	"Perla Greenig", 1992, "Becker Group",	371, 57.99),
+	(2, "Murphy's Law", "Amerigo Barnbrook", 1998, "Rempel Group", 505,	10.08),
+    (3,	"Human Capital", "Xylina Potten", 1991, "Spencer-Mueller", 557, 42.48),
+	(4, "Eddie", "Nikola Watkins", 2007, "Torphy-Turner", 333, 12.55),
+	(5,	"Aerial, The (La antena)", "Katine Boydell", 1998, "Hilll-Connelly", 122, 28.98)
 ;
-
-
-
-
-
-
-
-
-
-
--- COMMIT;
-
--- CREATE USER 'msisreader'@'%' IDENTIFIED BY 'msisreadonly';
--- GRANT SELECT ON * . * TO 'msisreader'@'%';

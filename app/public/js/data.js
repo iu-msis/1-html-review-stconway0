@@ -1,4 +1,4 @@
-const DataApp = {
+const SomeApp = {
     data() {
       return {
         students: [],
@@ -57,4 +57,4 @@ const DataApp = {
   
   }
   
-  Vue.createApp(DataApp).mount('#dataApp');
+  Vue.createApp(SomeApp).mount('#offerApp');
