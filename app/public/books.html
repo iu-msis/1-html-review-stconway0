@@ -17,181 +17,145 @@
 
     <!-- HTML CSS -->
     <link href="css/site.css" rel="stylesheet" type="text/css">
+
+    <!-- Vue.js script-->
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
+    <body>
 
-    <!-- Navigation menu -->
-    <!-- Navigation style -->
-    <nav class="navbar navbar-expand-lg navbar-dark" id="userNav">
-      <div class="container-fluid">
+      <!-- Navigation menu -->
+      <!-- Navigation style -->
+      <nav class="navbar navbar-expand-lg navbar-dark" id="userNav">
+        <div class="container-fluid">
 
-        <!-- Navbar content -->
-        <a class="navbar-brand" id="page_logo" href="index.html">Books</a>
+          <!-- Navbar content -->
+          <a class="navbar-brand" id="page_logo" href="index.html">Books</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="books.html">Books</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="interests.html">Interests</a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
-
-
-    <!-- Main code -->
-    <main>
-      <div class="container">
-
-        <br>
-
-        <h1>Books</h1>
-
-        <br>
-
-        <div class="row">  
-          <!-- Book data was assembled using the following website: https://www.mockaroo.com/ -->
-          <table class="table table-striped" id="bookTable">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Auhtor(s)</th>
-                <th scope="col">Year Published</th>
-                <th scope="col">Publisher</th>
-                <th scope="col">Page Count</th>
-                <th scope="col">MSRP</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>People in Places</td>
-                <td>Perla Greenig</td>
-                <td>1992</td>
-                <td>Becker Group</td>
-                <td>371</td>
-                <td>$57.00</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Murphy's Law</td>
-                <td>Amerigo Barnbrook</td>
-                <td>1998</td>
-                <td>Rempel Group</td>
-                <td>505</td>
-                <td>$10.08</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Human Capital</td>
-                <td>Xylina Potten</td>
-                <td>1991</td>
-                <td>Spencer-Mueller</td>
-                <td>557</td>
-                <td>$42.48</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Eddie</td>
-                <td>Nikola Watkins</td>
-                <td>2007</td>
-                <td>Torphy-Turner</td>
-                <td>333</td>
-                <td>$12.55</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Aerial, The (La antena)</td>
-                <td>Katine Boydell</td>
-                <td>1998</td>
-                <td>Hilll-Connelly</td>
-                <td>122</td>
-                <td>$28.98</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="books.html">Books</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="interests.html">Interests</a>
+              </li>
+            </ul>
+          </div>
 
         </div>
+      </nav>
 
-        <br><br>
 
-        <h3 class="text-center">Add a Book to the Table</h3>
+      <!-- Main code -->
+      <main>
+        <div class="container">
+          <h1 class="page_title">Books</h1>
 
-        <div class="row justify-content-center">  
-          <form class="book-form">
-            <div class="form-group row">
-              <label for="title" class="col-sm-2 col-form-label">Title: </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="title" placeholder="Title">
+          <div class="row">  
+            <!-- Book data was assembled using the following website: https://www.mockaroo.com/ -->
+            <table class="table table-striped" id="bookTable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Auhtor(s)</th>
+                  <th scope="col">Year Published</th>
+                  <th scope="col">Publisher</th>
+                  <th scope="col">Page Count</th>
+                  <th scope="col">MSRP</th>
+                </tr>
+              </thead>
+              <tbody id="booksApp">
+                <tr v-for="b in books">
+                  <th scope="row"> {{b.id}} </th>
+                  <td> {{b.title}} </td>
+                  <td> {{b.author}} </td>
+                  <td> {{b.year_published}}</td>
+                  <td>{{b.publisher}}</td>
+                  <td>{{b.page_count}}</td>
+                  <td>{{prettyDollar(b.msrp) }}</td>
+                </tr>
+                
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="text-center">Add a Book to the Table</h3>
+
+          <div class="row justify-content-center">  
+            <form class="book-form">
+              <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Title: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="title" placeholder="Title">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <div class="col">
-                <input type="text" class="form-control" id="first_name" placeholder="First name">
+              <div class="form-group row">
+                <div class="col">
+                  <input type="text" class="form-control" id="first_name" placeholder="First name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="last_name" placeholder="Last name">
+                </div>
               </div>
-              <div class="col">
-                <input type="text" class="form-control" id="last_name" placeholder="Last name">
-              </div>
-            </div>
 
-            <div class="form-group row">
-              <label for="email" class="col-sm-2 col-form-label">Email: </label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" placeholder="Email">
+              <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email: </label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <label for="publisher" class="col-sm-2 col-form-label">Publisher: </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="publisher" placeholder="Publisher">
+              <div class="form-group row">
+                <label for="publisher" class="col-sm-2 col-form-label">Publisher: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="publisher" placeholder="Publisher">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <label for="pages" class="col-sm-2 col-form-label">Page Count: </label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" id="pages" placeholder="120">
+              <div class="form-group row">
+                <label for="pages" class="col-sm-2 col-form-label">Page Count: </label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="pages" placeholder="120">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <label for="msrp" class="col-sm-2 col-form-label">MSRP: </label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" id="msrp" placeholder="26.99">
-              </div>
-            </div>     
+              <div class="form-group row">
+                <label for="msrp" class="col-sm-2 col-form-label">MSRP: </label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="msrp" placeholder="26.99">
+                </div>
+              </div>     
 
-            <div class="text-center">
-              <button type="button" class="btn btn-primary">Primary</button>   
-            </div>    
-          </form>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary">Primary</button>   
+              </div>    
+            </form>
+          </div>
+
+          </div>
         </div>
+      </main>
+      
+      <!-- JavaScript -->
+      <!-- Table sort JS made possible with the following resource: http://tristen.ca/tablesort/demo/ -->
+      <script src="js/tablesort.min.js"></script>
+      <script>
+        new Tablesort(document.getElementById("bookTable"));
+      </script>
 
-        </div>
-      </div>
-    </main>
-    
-    <!-- JavaScript -->
-    <!-- Table sort JS made possible with the following resource: http://tristen.ca/tablesort/demo/ -->
-    <script src="js/tablesort.min.js"></script>
-    <script>
-      new Tablesort(document.getElementById("bookTable"));
-    </script>
-
-   <!-- Bundle Bootstrap JS -->
+    <!-- Bundle Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+    <script src="js/books.js"></script>
   </body>
 </html>

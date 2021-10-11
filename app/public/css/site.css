@@ -26,6 +26,9 @@ button {
   border-color: #533EAB;
 }
 
+.page_title {
+  margin: 30px 0px 10px 0px;
+}
 
 
 /* index.html */
