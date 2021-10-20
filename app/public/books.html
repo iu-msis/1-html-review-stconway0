@@ -21,137 +21,128 @@
     <!-- Vue.js script-->
     <script src="https://unpkg.com/vue@next"></script>
   </head>
-    <body>
+  <body>
 
-      <!-- Navigation menu -->
-      <!-- Navigation style -->
-      <nav class="navbar navbar-expand-lg navbar-dark" id="userNav">
-        <div class="container-fluid">
+    <!-- Navigation menu -->
+    <!-- Navigation style -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="userNav">
+      <div class="container-fluid">
 
-          <!-- Navbar content -->
-          <a class="navbar-brand" id="page_logo" href="index.html">Books</a>
+        <!-- Navbar content -->
+        <a class="navbar-brand" id="page_logo" href="index.html">Books</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="books.html">Books</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="interests.html">Interests</a>
-              </li>
-            </ul>
-          </div>
-
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="books.html">Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="interests.html">Interests</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+
+      </div>
+    </nav>
 
 
-      <!-- Main code -->
-      <main>
-        <div class="container">
-          <h1 class="page_title">Books</h1>
+    <!-- Main code -->
+    <main>
+      <div class="container" id="booksApp">
+        <h1 class="page_title">Books</h1>
 
-          <div class="row">  
-            <!-- Book data was assembled using the following website: https://www.mockaroo.com/ -->
-            <table class="table table-striped" id="bookTable">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Auhtor(s)</th>
-                  <th scope="col">Year Published</th>
-                  <th scope="col">Publisher</th>
-                  <th scope="col">Page Count</th>
-                  <th scope="col">MSRP</th>
-                </tr>
-              </thead>
-              <tbody id="booksApp">
-                <tr v-for="b in books">
-                  <th scope="row"> {{b.id}} </th>
-                  <td> {{b.title}} </td>
-                  <td> {{b.author}} </td>
-                  <td> {{b.year_published}}</td>
-                  <td>{{b.publisher}}</td>
-                  <td>{{b.page_count}}</td>
-                  <td>{{prettyDollar(b.msrp) }}</td>
-                </tr>
-                
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="row">  
+          <!-- Book data was assembled using the following website: https://www.mockaroo.com/ -->
+          <table class="table table-striped" id="bookTable">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Auhtor(s)</th>
+                <th scope="col">Year Published</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Page Count</th>
+                <th scope="col">MSRP</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr v-for="b in books">
+                <td> {{b.title}} </td>
+                <td> {{b.author}} </td>
+                <td> {{b.year_published}}</td>
+                <td>{{b.publisher}}</td>
+                <td>{{b.page_count}}</td>
+                <td>{{prettyDollar(b.msrp) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Add a book form -->
+        <div class="row d-flex justify-content-center">
 
           <h3 class="text-center">Add a Book to the Table</h3>
 
-          <div class="row justify-content-center">  
-            <form class="book-form">
-              <div class="form-group row">
-                <label for="title" class="col-sm-2 col-form-label">Title: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="title" placeholder="Title">
+          <div class="col-6">
+            <form v-on:submit.prevent="postNewBook" class="book-form needs-validation" id="">
+              <!-- Entering book's title -->
+              <div class="mb-3">
+                <label for="book_title">Book Title</label>
+                <input type="text" v-model="bookForm.book_title" class="form-control" id="book_title" placeholder="Enter the book's title">
+              </div>
+
+              <!-- Entering author's name -->
+              <div class="row">
+                <div class="mb-3">
+                  <label for="author">First name</label>
+                  <input type="text" v-model="bookForm.author" class="form-control" id="author" placeholder="Enter author full name (First Last)">
                 </div>
               </div>
 
-              <div class="form-group row">
-                <div class="col">
-                  <input type="text" class="form-control" id="first_name" placeholder="First name">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="last_name" placeholder="Last name">
-                </div>
+              <!-- Entering publisher -->
+              <div class="mb-3">
+                <label for="publisher">Publisher</label>
+                <input type="text" v-model="bookForm.publisher" class="form-control" id="publisher" placeholder="Enter the publisher's name">
               </div>
 
-              <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">Email: </label>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="email" placeholder="Email">
+              <!-- Entering year published, page count & MSRP -->
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="year">Year</label>
+                  <input type="number" v-model="bookForm.year" class="form-control" id="year" placeholder="Year published">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="page_count">Page Count</label>
+                  <input type="number" v-model="bookForm.page_count" class="form-control" id="page_count" placeholder="Number of pages">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="msrp">MSRP</label>
+                  <input type="text" v-model="bookForm.msrp" class="form-control" id="msrp" placeholder="Book price">
                 </div>
               </div>
-
-              <div class="form-group row">
-                <label for="publisher" class="col-sm-2 col-form-label">Publisher: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="publisher" placeholder="Publisher">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="pages" class="col-sm-2 col-form-label">Page Count: </label>
-                <div class="col-sm-10">
-                  <input type="number" class="form-control" id="pages" placeholder="120">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="msrp" class="col-sm-2 col-form-label">MSRP: </label>
-                <div class="col-sm-10">
-                  <input type="number" class="form-control" id="msrp" placeholder="26.99">
-                </div>
-              </div>     
 
               <div class="text-center">
-                <button type="button" class="btn btn-primary">Primary</button>   
-              </div>    
+                <button class="btn btn-large btn-primary" type="submit">Add a Book</button>
+              </div>
             </form>
           </div>
-
-          </div>
         </div>
-      </main>
-      
-      <!-- JavaScript -->
-      <!-- Table sort JS made possible with the following resource: http://tristen.ca/tablesort/demo/ -->
-      <script src="js/tablesort.min.js"></script>
-      <script>
-        new Tablesort(document.getElementById("bookTable"));
-      </script>
+
+      </div>
+    </main>
+    
+    <!-- JavaScript -->
+    <!-- Table sort JS made possible with the following resource: http://tristen.ca/tablesort/demo/ -->
+    <script src="js/tablesort.min.js"></script>
+    <script>
+      new Tablesort(document.getElementById("bookTable"));
+    </script>
 
     <!-- Bundle Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
