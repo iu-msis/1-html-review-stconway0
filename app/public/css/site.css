@@ -155,3 +155,7 @@ button {
   padding-left: 20px;
   margin-bottom: 50px;
 }
+
+.table_button {
+  margin: 2px;
+}

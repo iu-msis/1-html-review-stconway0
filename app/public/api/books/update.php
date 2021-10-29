@@ -2,26 +2,31 @@
 
 try {
     $_POST = json_decode(
-        file_get_contents('php://input'), 
-        true,
-        2,
-        JSON_THROW_ON_ERROR
-    );
+                file_get_contents('php://input'), 
+                true,
+                2,
+                JSON_THROW_ON_ERROR
+            );
 } catch (Exception $e) {
     header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
+
     exit;
 }
 
 require("class/DbConnection.php");
-
-// Step 1: Get a datase connection from our helper class
 $db = DbConnection::getConnection();
 
-// Step 2: Create & run the query
+// Creaing and running the query
 $stmt = $db->prepare(
-  "INSERT INTO books(title, author, year_published, publisher, page_count, msrp)
-  VALUES (?, ?, ?, ?, ?, ?)"
-);
+    'UPDATE books SET 
+    title = ?,
+    author = ?,
+    year_published = ?,
+    publisher = ?,
+    page_count = ?,
+    msrp = ?
+    WHERE id = ?'
+  );
 
 $stmt->execute([
   $_POST['title'],
@@ -29,9 +34,10 @@ $stmt->execute([
   $_POST['year_published'],
   $_POST['publisher'],
   $_POST['page_count'],
-  $_POST['msrp']
+  $_POST['msrp'],
+  $_POST['id']
 ]);
 
-// Step 4: Output
+// Output
 header('HTTP/1.1 303 See Other');
 header('Location: ../books/');
