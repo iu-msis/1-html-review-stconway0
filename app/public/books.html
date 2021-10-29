@@ -69,16 +69,21 @@
                 <th scope="col">Publisher</th>
                 <th scope="col">Page Count</th>
                 <th scope="col">MSRP</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody >
-              <tr v-for="b in books">
-                <td> {{b.title}} </td>
-                <td> {{b.author}} </td>
-                <td> {{b.year_published}}</td>
-                <td>{{b.publisher}}</td>
-                <td>{{b.page_count}}</td>
-                <td>{{prettyDollar(b.msrp) }}</td>
+              <tr v-for="book in books">
+                <td> {{book.title}} </td>
+                <td> {{book.author}} </td>
+                <td> {{book.year_published}}</td>
+                <td>{{book.publisher}}</td>
+                <td>{{book.page_count}}</td>
+                <td>{{prettyDollar(book.msrp) }}</td>
+                <td>
+                  <button type="button" v-on:click="handleEditBook(book)" class="btn btn-outline-secondary btn-sm table_button">Edit</button>
+                  <button type="button" v-on:click="postDeleteBook(book)" class="btn btn-outline-secondary btn-sm table_button">Delete</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -93,42 +98,43 @@
             <form v-on:submit.prevent="postNewBook" class="book-form needs-validation" id="">
               <!-- Entering book's title -->
               <div class="mb-3">
-                <label for="book_title">Book Title</label>
-                <input type="text" v-model="bookForm.book_title" class="form-control" id="book_title" placeholder="Enter the book's title">
+                <label for="title">Book Title</label>
+                <input type="text" v-model="bookForm.title" class="form-control" id="title" placeholder="Enter the book's title" required="required">
               </div>
 
               <!-- Entering author's name -->
               <div class="row">
                 <div class="mb-3">
                   <label for="author">First name</label>
-                  <input type="text" v-model="bookForm.author" class="form-control" id="author" placeholder="Enter author full name (First Last)">
+                  <input type="text" v-model="bookForm.author" class="form-control" id="author" placeholder="Enter author full name (First Last)" required="required">
                 </div>
               </div>
 
               <!-- Entering publisher -->
               <div class="mb-3">
                 <label for="publisher">Publisher</label>
-                <input type="text" v-model="bookForm.publisher" class="form-control" id="publisher" placeholder="Enter the publisher's name">
+                <input type="text" v-model="bookForm.publisher" class="form-control" id="publisher" placeholder="Enter the publisher's name" required="required">
               </div>
 
               <!-- Entering year published, page count & MSRP -->
               <div class="row">
                 <div class="col-md-4 mb-3">
-                  <label for="year">Year</label>
-                  <input type="number" v-model="bookForm.year" class="form-control" id="year" placeholder="Year published">
+                  <label for="year_published">Year</label>
+                  <input type="number" v-model="bookForm.year_published" class="form-control" id="year_published" placeholder="Year published" required="required"> 
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="page_count">Page Count</label>
-                  <input type="number" v-model="bookForm.page_count" class="form-control" id="page_count" placeholder="Number of pages">
+                  <input type="number" v-model="bookForm.page_count" class="form-control" id="page_count" placeholder="Number of pages" required="required">
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="msrp">MSRP</label>
-                  <input type="text" v-model="bookForm.msrp" class="form-control" id="msrp" placeholder="Book price">
+                  <input type="text" v-model="bookForm.msrp" class="form-control" id="msrp" placeholder="Book price" required="required">
                 </div>
               </div>
 
               <div class="text-center">
-                <button class="btn btn-large btn-primary" type="submit">Add a Book</button>
+                <button type="submit" class="btn btn-primary table_button" >{{ selectedBook === null ? "Add " : "Edit"}} Book</button>
+                <button type="button" class="btn btn-outline-secondary table_button" v-if="selectedBook" v-on:click="handleResetEdit">Cancel Edit</button>
               </div>
             </form>
           </div>

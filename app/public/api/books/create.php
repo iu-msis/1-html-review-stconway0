@@ -24,9 +24,9 @@ $stmt = $db->prepare(
 );
 
 $stmt->execute([
-  $_POST['book_title'],
+  $_POST['title'],
   $_POST['author'],
-  $_POST['year'],
+  $_POST['year_published'],
   $_POST['publisher'],
   $_POST['page_count'],
   $_POST['msrp']
