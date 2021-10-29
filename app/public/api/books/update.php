@@ -19,12 +19,12 @@ $db = DbConnection::getConnection();
 // Creaing and running the query
 $stmt = $db->prepare(
     'UPDATE books SET 
-      title = ?,
-      author = ?,
-      year_published = ?,
-      publisher = ?,
-      page_count = ?,
-      msrp = ?,
+    title = ?,
+    author = ?,
+    year_published = ?,
+    publisher = ?,
+    page_count = ?,
+    msrp = ?
     WHERE id = ?'
   );
 

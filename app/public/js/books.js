@@ -122,5 +122,3 @@ const BooksApp = {
 }
 
 Vue.createApp(BooksApp).mount('#booksApp');
-
-
