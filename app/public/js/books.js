@@ -63,14 +63,19 @@ const BooksApp = {
       this.bookForm = Object.assign({}, this.selectedBook);
     },
 
+    handleResetEdit() {
+      this.selectedBook = null;
+      this.bookForm = {};
+    },
+
     postEditBook(evt) {
-      this.booksForm.id = this.selectedBook.id;
+      this.bookForm.id = this.selectedBook.id;
   
-      console.log("Editing!", this.booksForm);
+      console.log("Editing!", this.bookForm);
   
       fetch('api/books/update.php', {
           method:'POST',
-          body: JSON.stringify(this.booksForm),
+          body: JSON.stringify(this.bookForm),
           headers: {
             "Content-Type": "application/json; charset=utf-8"
           }
@@ -81,14 +86,9 @@ const BooksApp = {
           
           this.books = json;
           
-          
           this.handleResetEdit();
         });
     },
-
-
-
-
 
     /* Deleting book information */
     postDeleteBook(book) {
@@ -114,17 +114,11 @@ const BooksApp = {
               
               this.handleResetEdit();
           });
+    }
   },
-
-  handleResetEdit() {
-    this.selectedBook = null;
-    this.bookForm = {};
+  created() {
+      this.fetchBooksData();
   }
-},
-created() {
-    this.fetchBooksData();
-}
-
 }
 
 Vue.createApp(BooksApp).mount('#booksApp');
